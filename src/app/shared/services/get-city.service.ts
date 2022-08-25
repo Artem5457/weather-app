@@ -14,12 +14,12 @@ export class GetCityService {
 
   fetchCurrentCity(coord: LngLat): Observable<City> {
     return this.http.get<City>(
-      `http://api.openweathermap.org/geo/1.0/reverse?lat=${coord.lat}&lon=${coord.lon}&limit=${1}&appid=${appId}`);
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${coord.lat}&lon=${coord.lon}&limit=${1}&appid=${appId}`);
   }
 
   getCitiesByName(city: string): Observable<City[]> {
     return this.http.get<City[]>(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${appId}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${appId}`
     );
   }
 }
