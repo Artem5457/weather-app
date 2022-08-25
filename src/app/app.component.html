@@ -1,0 +1,28 @@
+<h1>Lng: {{ (currentLocation$ | async).lon }}</h1>
+<h1>Lat: {{ (currentLocation$ | async).lat }}</h1>
+<h1>City: {{ (myCity$ | async)?.name }}</h1>
+<h1>Country: {{ (myCity$ | async)?.country }}</h1>
+<img
+  style="width: 60px; height: 30px"
+  [src]="(myCity$ | async) | countryFlag"
+  alt="Country flag">
+
+<button (click)="setCelcius()">Celcius</button>
+<button (click)="setFarengate()">Farengate</button>
+<div class="icon">
+  <mat-icon [svgIcon]="'sleet'"></mat-icon>
+</div>
+
+<mat-icon [svgIcon]="'atmosphere'"></mat-icon>
+
+<ul>
+  <li *ngFor="let s of (story$ | async)">
+    {{ s.min.weather[0].description }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let s of (story$ | async)" style="background-color: brown">
+    <mat-icon [svgIcon]="s.min | weatherIcon"></mat-icon>
+  </li>
+</ul>
