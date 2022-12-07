@@ -1,35 +1,48 @@
 @mixin onLargeScreen {
-  @media (min-width: 1920px) {
+  @media (min-width: 1720px) and (min-height: 500px) {
     @content;
   }
 }
 
 @mixin onDesktop {
-  @media (min-width: 1440px) {
+  @media (min-width: 1440px) and (min-height: 500px) {
     @content;
   }
 }
 
 @mixin onNoteBook {
-  @media (min-width: 1280px) {
+  @media (min-width: 1280px) and (min-height: 500px) {
     @content;
   }
 }
 
 @mixin onTabletPro {
-  @media (min-width: 1024px) {
+  @media (min-width: 940px) and (min-height: 500px) {
     @content;
   }
 }
 
 @mixin onTablet {
-  @media (min-width: 768px) {
+  @media (min-width: 600px) and (min-height: 500px) {
     @content;
   }
 }
 
 @mixin onSmartPhone {
-  @media (min-width: 320px) {
+  @media (min-width: 320px) and (min-height: 500px) {
     @content;
   }
+}
+
+@mixin leftBoard($width) {
+  position: relative;
+  width: $width;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+@mixin iconSize($size) {
+  width: $size;
+  height: $size;
 }

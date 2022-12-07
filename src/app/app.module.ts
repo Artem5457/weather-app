@@ -11,10 +11,12 @@ import { effects } from './store/effects';
 import { PipesModule } from './shared/pipes/pipes.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from "@angular/material/icon";
+import { ForecastContentContainerComponent } from './forecast-content-container/forecast-content-container.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ForecastContentContainerComponent
   ],
   imports: [
     BrowserModule,

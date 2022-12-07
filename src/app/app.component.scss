@@ -1,5 +1,170 @@
-.icon {
-  background-color: black;
-  width: 100px;
-  height: 100px;
+@import "src/app/utils/mixins";
+
+$text-color: #E7E7EB;
+$secondary-color:  #A09FB1;
+$search-button-color: #6E707A;
+$date-location-color: #88869D;
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+
+  @include onTablet {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+  }
+
+  .icon {
+    background-color: black;
+    width: 100px;
+    height: 100px;
+  }
+
+  .weather-panel {
+    height: 810px;
+    background-size: 150%;
+    background: #1E213A;
+
+    @include onTablet {
+      @include leftBoard(260px);
+    }
+
+    @include onTabletPro {
+      @include leftBoard(370px);
+    }
+
+    @include onLargeScreen {
+      @include leftBoard(440px);
+    }
+
+    &__buttons {
+      display: flex;
+      padding: 10px 5px;
+      justify-content: space-between;
+
+      .search-button {
+        font-size: 16px;
+        font-family: inherit;
+        line-height: 18px;
+        color: $text-color;
+        padding: 9px 15px;
+        background-color: $search-button-color;
+        cursor: pointer;
+      }
+
+      .current-location-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: $search-button-color;
+        border: 2px solid $search-button-color;
+        cursor: pointer;
+        color: $text-color;
+      }
+    }
+
+    &__background {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 240px;
+      background: linear-gradient(rgba(30,33,58,.9) 100%, rgba(30,33,58,.9) 100%), url('../assets/Cloud-background.png');
+      background-size: 100%;
+      background-position: 36% 57%;
+      background-repeat: no-repeat;
+
+      .weather-icon {
+        @include iconSize(170px);
+        padding-right: 20px;
+
+        @include onTablet {
+          @include iconSize(130px);
+        }
+
+        @include onTabletPro {
+          @include iconSize(180px);
+        }
+
+        @include onLargeScreen {
+          @include iconSize(190px);
+        }
+      }
+    }
+
+    &__temperature {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 8px 0;
+
+      .weather-temp {
+        color: $text-color;
+        font-size: 115px;
+        line-height: 115px;
+      }
+
+      .weather-temp-unit {
+        color: $secondary-color;
+        font-size: 40px;
+        padding-bottom: 10px;
+      }
+    }
+
+    &__title {
+      display: flex;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 36px;
+      margin-top: 15px;
+      line-height: 42px;
+      color: $secondary-color;
+      margin-top: 50px;
+    }
+
+    &__date {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      color: $date-location-color;
+      gap: 17px;
+      margin-top: 50px;
+
+      .date-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: $date-location-color;
+      }
+    }
+  }
+
+  .header-forecast-new {
+    height: 810px;
+    background-color: blue;
+
+    @include onTablet {
+      @include leftBoard(260px);
+    }
+
+    @include onTabletPro {
+      @include leftBoard(370px);
+    }
+
+    @include onLargeScreen {
+      @include leftBoard(440px);
+    }
+  }
+
+  .activeScroll {
+    overflow-y: scroll;
+  }
 }

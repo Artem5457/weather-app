@@ -1,5 +1,4 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import * as moment from "moment";
 import {WEATHER_APP_KEIES} from "../keys";
 import { ForecastState } from "../reducers/forecast.reducer";
 
@@ -26,10 +25,10 @@ export const getFiveDaysForecast = createSelector(
   getFiveDaysFullForecast,
   (state) => {
     const periodForecast = state?.list;
-    const currentDate = moment().date();
+    const currentDate = new Date().getDate();
     let calcMaxTempForFifthDay;
 
-    const tomorrowDay = periodForecast?.findIndex(el => moment(el.dt_txt).date() === currentDate + 1);
+    const tomorrowDay = periodForecast?.findIndex(el => new Date(el.dt_txt).getDate() === currentDate + 1);
     if (periodForecast) {
       calcMaxTempForFifthDay = tomorrowDay + 36 <= periodForecast.length - 1
       ? periodForecast[tomorrowDay + 36]

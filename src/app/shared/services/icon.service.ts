@@ -19,6 +19,8 @@ export class IconService {
     {url: 'assets/kinds_of_weather/Hail.svg', name: 'hail'},
     {url: 'assets/kinds_of_weather/Clear.svg', name: 'clear'},
     {url: 'assets/kinds_of_weather/Atmosphere.svg', name: 'atmosphere'},
+    {url: 'assets/icons/target.svg', name: 'target'},
+    {url: 'assets/icons/location-marker.svg', name: 'location-marker'},
   ];
 
   constructor(

@@ -1,2 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #958c8c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7deaaf;
+  border-radius: 8px;
+  border: 2px solid #958c8c;
+
+  &:hover {
+    background: #80a4e8;
+  }
+}

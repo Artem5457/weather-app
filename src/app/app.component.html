@@ -1,28 +1,43 @@
-<h1>Lng: {{ (currentLocation$ | async).lon }}</h1>
-<h1>Lat: {{ (currentLocation$ | async).lat }}</h1>
-<h1>City: {{ (myCity$ | async)?.name }}</h1>
-<h1>Country: {{ (myCity$ | async)?.country }}</h1>
-<img
-  style="width: 60px; height: 30px"
-  [src]="(myCity$ | async) | countryFlag"
-  alt="Country flag">
-
-<button (click)="setCelcius()">Celcius</button>
-<button (click)="setFarengate()">Farengate</button>
-<div class="icon">
-  <mat-icon [svgIcon]="'sleet'"></mat-icon>
+<div class="weather-panel" *ngIf="!isShowPanel; else searchPanel">
+  <div class="weather-panel__buttons">
+    <button class="search-button">
+      Search for places
+    </button>
+    <button class="current-location-button">
+      <mat-icon
+        svgIcon="target"
+        class="target-icon"
+      ></mat-icon>
+    </button>
+  </div>
+  <div class="weather-panel__background">
+    <mat-icon class="weather-icon" svgIcon="snow"></mat-icon>
+  </div>
+  <div class="weather-panel__temperature">
+    <span class="weather-temp">15</span>
+    <span class="weather-temp-unit">°C</span>
+    <span class="weather-temp-unit">°F</span>
+  </div>
+  <span class="weather-panel__title">
+    Shower
+  </span>
+  <div class="weather-panel__date">
+    <div>Today</div>
+    <div class="date-dot"></div>
+    <div>Fri, 5 Jun</div>
+  </div>
+  <div>
+    <mat-icon svgIcon="location-marker" style="color: white"></mat-icon>
+  </div>
 </div>
+<app-forecast-content-container
+  #story
+  [ngClass]="{
+    activeScroll: (isInfoBlockScrolled$ | async)
+  }"
+></app-forecast-content-container>
 
-<mat-icon [svgIcon]="'atmosphere'"></mat-icon>
-
-<ul>
-  <li *ngFor="let s of (story$ | async)">
-    {{ s.min.weather[0].description }}
-  </li>
-</ul>
-
-<ul>
-  <li *ngFor="let s of (story$ | async)" style="background-color: brown">
-    <mat-icon [svgIcon]="s.min | weatherIcon"></mat-icon>
-  </li>
-</ul>
+<ng-template #searchPanel>
+  <div class="header-forecast-new">
+  </div>
+</ng-template>

@@ -44,3 +44,7 @@ export const weatherQuery: WeatherQuery = {
   hail: 'freezing rain',
   shower: 'shower'
 }
+
+export const Breakpoints = {
+  Mobile: '(max-width: 505px)',
+}
