@@ -1,38 +1,12 @@
-@mixin onLargeScreen {
-  @media (min-width: 1720px) and (min-height: 500px) {
-    @content;
-  }
-}
+$screen-height: 620px;
 
-@mixin onDesktop {
-  @media (min-width: 1440px) and (min-height: 500px) {
-    @content;
-  }
-}
-
-@mixin onNoteBook {
-  @media (min-width: 1280px) and (min-height: 500px) {
-    @content;
-  }
-}
-
-@mixin onTabletPro {
-  @media (min-width: 940px) and (min-height: 500px) {
-    @content;
-  }
-}
-
-@mixin onTablet {
-  @media (min-width: 600px) and (min-height: 500px) {
-    @content;
-  }
-}
-
-@mixin onSmartPhone {
-  @media (min-width: 320px) and (min-height: 500px) {
-    @content;
-  }
-}
+$mobile: 320px;
+$tablet: 600px;
+$tablet-pro: 940px;
+$laptop: 1280px;
+$desktop: 1440px;
+$large-screen: 1720px;
+$height-primary: 660px;
 
 @mixin leftBoard($width) {
   position: relative;

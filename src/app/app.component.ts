@@ -1,25 +1,22 @@
-import {AfterViewInit, Component, ElementRef, HostListener, ViewChild} from '@angular/core';
-import {BehaviorSubject, combineLatest, fromEvent, map, Subscription, timer} from "rxjs";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {Breakpoints} from "./shared/shared.consts";
-import {IconService} from "./shared/services/icon.service";
-import {getFiveDaysForecast} from "./store/selectors/forecast.selector";
-import {GetForecastService} from "./shared/services/get-forecast.service";
-import {getForecast, getLocationCoords} from "./store/actions/weather-app.action";
-// import {LngLat, City} from "./shared/interfaces/geolocation.interface";
-// import {getLocationCoords, getForecast, setCelsius, setFarengate} from "./store/actions/weather-app.action";
-// import {getCurrentCity, getCurrentLocation} from "./store/selectors/location.selector";
-// import {GetCityService} from "./shared/services/get-city.service";
-// import {GetForecastService} from "./shared/services/get-forecast.service";
-// import { getFiveDaysForecast } from './store/selectors/forecast.selector';
-// import { IconService } from './shared/services/icon.service';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { BehaviorSubject, Observable, map, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Breakpoints } from './shared/shared.consts';
+import { IconService } from './shared/services/icon.service';
+import { getFiveDaysForecast } from './store/selectors/forecast.selector';
+import { GetForecastService } from './shared/services/get-forecast.service';
+import {
+  getForecast,
+  getLocationCoords,
+} from './store/actions/weather-app.action';
+import { DefineCurrentLocationService } from './shared/services/define-current-location-weather.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   @ViewChild('story', { read: ElementRef }) story: ElementRef;
@@ -39,7 +36,8 @@ export class AppComponent {
     private getForecastService: GetForecastService,
     private iconService: IconService,
     private breakpointObserver: BreakpointObserver,
-  ) { }
+    private locationService: DefineCurrentLocationService
+  ) {}
 
   @HostListener('window: resize')
   onResize(): void {
@@ -50,31 +48,28 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.store.dispatch(getLocationCoords());
-      this.store.dispatch(getForecast({
-        lon: -43.2093727,
-        lat: -22.9110137
-      }));
-
-    this.subscription.add(
-      this.story$.subscribe(story => console.log('Tomorrow day:', story))
-    );
-
-    this.getForecastService.getFiveDayForecast(
-      {
-        lon: -43.2093727,
-        lat: -22.9110137
-      }
-    ).subscribe(
-      (fiveDayForecast) => console.log('5 day forecast: ', fiveDayForecast)
-    );
+    // this.subscription.add(
+    //   this.locationService.defineIp().subscribe(data => console.log(data))
+    // );
+    // this.store.dispatch(getLocationCoords());
+    //   this.store.dispatch(getForecast({
+    //     lon: -43.2093727,
+    //     lat: -22.9110137
+    //   }));
+    // this.subscription.add(
+    //   this.story$.subscribe(story => console.log('Tomorrow day:', story))
+    // );
+    // this.getForecastService.getFiveDayForecast(
+    //   {
+    //     lon: -43.2093727,
+    //     lat: -22.9110137
+    //   }
+    // ).subscribe(
+    //   (fiveDayForecast) => console.log('5 day forecast: ', fiveDayForecast)
+    // );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  onClick(): void {
-    this.isShowPanel = !this.isShowPanel;
   }
 }
